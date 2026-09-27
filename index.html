@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mostafa & Amira Wedding</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f8f5ef;
+  color:#6b6056;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
+}
+
+button,
+a{
+  font-family:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+#opening-screen{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:#f8f5ef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+#opening-screen.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.opening-content{
+  padding:25px;
+  animation:fadeUp 1s ease;
+}
+
+.opening-small{
+  font-size:10px;
+  letter-spacing:5px;
+  color:#bda991;
+  margin-bottom:25px;
+}
+
+.opening-names{
+  font-size:clamp(45px,12vw,75px);
+  font-weight:normal;
+  line-height:1.05;
+  color:#665b50;
+}
+
+.opening-date{
+  margin-top:25px;
+  font-size:12px;
+  letter-spacing:5px;
+  color:#8d7d6d;
+}
+
+#openInvitation{
+  margin-top:40px;
+  padding:16px 30px;
+  border:1px solid #bda991;
+  background:transparent;
+  color:#77695c;
+  font-size:10px;
+  letter-spacing:3px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+#openInvitation:active{
+  transform:scale(.97);
+}
+
+#openInvitation:hover{
+  background:#bda991;
+  color:white;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+#invitation{
+  display:none;
+}
+
+#invitation.show{
+  display:block;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero-content{
+  animation:fadeUp 1s ease;
+}
+
+.label{
+  font-size:10px;
+  letter-spacing:4px;
+  color:#bda991;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:clamp(48px,13vw,90px);
+  font-weight:normal;
+  line-height:1;
+  color:#665b50;
+}
+
+.hero h1 span{
+  display:block;
+  font-size:30px;
+  margin:12px 0;
+  color:#bda991;
+}
+
+.date{
+  margin-top:35px;
+  font-size:17px;
+  letter-spacing:5px;
+  color:#8d7d6d;
+}
+
+.day{
+  margin-top:12px;
+  font-size:10px;
+  letter-spacing:4px;
+  color:#bda991;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-section{
+  padding:50px 20px 90px;
+  text-align:center;
+}
+
+.photo-frame{
+  width:min(88vw,430px);
+  margin:auto;
+  padding:9px;
+  border:1px solid #cbbba6;
+  border-radius:50% 50% 0 0;
+}
+
+.photo-frame img{
+  width:100%;
+  border-radius:50% 50% 0 0;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+  padding:90px 25px;
+  text-align:center;
+  max-width:750px;
+  margin:auto;
+}
+
+.message h2{
+  font-size:clamp(28px,7vw,48px);
+  line-height:1.35;
+  font-weight:normal;
+  color:#665b50;
+}
+
+.divider{
+  margin:30px 0;
+  color:#bda991;
+  font-size:20px;
+}
+
+.message p{
+  max-width:520px;
+  margin:auto;
+  font-size:15px;
+  line-height:2;
+  color:#817568;
+}
+
+
+/* =========================
+   DETAILS
+========================= */
+
+.details{
+  padding:90px 20px;
+  text-align:center;
+  background:#eee8df;
+}
+
+.details h2{
+  font-size:clamp(32px,8vw,52px);
+  font-weight:normal;
+  color:#665b50;
+}
+
+.detail{
+  max-width:500px;
+  margin:35px auto 0;
+  padding-bottom:25px;
+  border-bottom:1px solid #d7cbbb;
+}
+
+.detail-title{
+  display:block;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#bda991;
+  margin-bottom:10px;
+}
+
+.detail-value{
+  font-size:17px;
+  line-height:1.8;
+  color:#6f6358;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown-section{
+  padding:90px 15px;
+  text-align:center;
+}
+
+.countdown{
+  max-width:600px;
+  margin:40px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+
+.count span{
+  display:block;
+  font-size:clamp(28px,7vw,48px);
+  color:#6c6055;
+}
+
+.count small{
+  display:block;
+  margin-top:8px;
+  font-size:8px;
+  letter-spacing:2px;
+  color:#bda991;
+}
+
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-section{
+  padding:80px 18px;
+  text-align:center;
+}
+
+.calendar{
+  max-width:420px;
+  margin:30px auto;
+}
+
+.calendar-week,
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+}
+
+.calendar-week div{
+  font-size:8px;
+  letter-spacing:1px;
+  color:#bda991;
+  padding:10px 0;
+}
+
+.calendar-grid div{
+  min-height:45px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  font-size:13px;
+}
+
+.calendar-grid .empty{
+  visibility:hidden;
+}
+
+.wedding-day-cell{
+  position:relative;
+}
+
+.wedding-day-cell .heart{
+  position:absolute;
+  font-size:43px;
+  color:#d2bea5;
+  opacity:.35;
+  z-index:0;
+}
+
+.wedding-day-cell .number{
+  position:relative;
+  z-index:1;
+}
+
+.calendar-button,
+.location-button{
+  display:inline-block;
+  padding:15px 28px;
+  border:1px solid #bda991;
+  color:#77695c;
+  font-size:10px;
+  letter-spacing:2px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.calendar-button:hover,
+.location-button:hover{
+  background:#bda991;
+  color:white;
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location{
+  padding:90px 20px;
+  text-align:center;
+  background:#eee8df;
+}
+
+.location h2{
+  font-size:35px;
+  font-weight:normal;
+  color:#665b50;
+}
+
+.location p{
+  margin:15px 0 30px;
+  line-height:1.8;
+  color:#817568;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+  min-height:75vh;
+  padding:80px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.final-star{
+  color:#bda991;
+  font-size:25px;
+  margin-bottom:25px;
+}
+
+.final-small{
+  font-size:9px;
+  letter-spacing:3px;
+  color:#bda991;
+}
+
+.final h2{
+  margin:25px 0;
+  font-size:clamp(40px,10vw,65px);
+  font-weight:normal;
+  color:#665b50;
+}
+
+.final-names{
+  font-size:20px;
+}
+
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicButton{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:9990;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #bda991;
+  background:rgba(248,245,239,.95);
+  color:#8d7d6d;
+  font-size:18px;
+  cursor:pointer;
+}
+
+
+/* =========================
+   HIDDEN YOUTUBE
+========================= */
+
+#musicFrame{
+  position:fixed;
+  width:1px;
+  height:1px;
+  left:-10px;
+  top:-10px;
+  border:0;
+  opacity:0;
+  pointer-events:none;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .countdown{
+    gap:0;
+  }
+
+  .count span{
+    font-size:27px;
+  }
+
+  .calendar-grid div{
+    min-height:42px;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<div id="opening-screen">
+
+  <div class="opening-content">
+
+    <div class="opening-small">
+      YOU ARE INVITED
+    </div>
+
+    <div class="opening-names">
+      Mostafa &amp; Amira
+    </div>
+
+    <div class="opening-date">
+      01 · 11 · 2026
+    </div>
+
+    <button id="openInvitation">
+      OPEN INVITATION
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     INVITATION
+========================= -->
+
+<div id="invitation">
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="label">
+        WEDDING INVITATION
+      </div>
+
+      <h1>
+        Mostafa
+        <span>&amp;</span>
+        Amira
+      </h1>
+
+      <div class="date">
+        01 · 11 · 2026
+      </div>
+
+      <div class="day">
+        SUNDAY
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHOTO -->
+
+  <section class="photo-section">
+
+    <div class="photo-frame">
+
+      <img
+        src="d954b11a-fb80-4180-af8d-680d21148b3b.jpeg"
+        alt="Mostafa & Amira"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- MESSAGE -->
+
+  <section class="message">
+
+    <div class="label">
+      TOGETHER WITH THEIR FAMILIES
+    </div>
+
+    <h2>
+      We would love<br>
+      to celebrate<br>
+      this special day with you
+    </h2>
+
+    <div class="divider">
+      ✦
+    </div>
+
+    <p>
+      Your presence would make our special day
+      even more beautiful.
+      We can't wait to celebrate this unforgettable
+      moment with you.
+    </p>
+
+  </section>
+
+
+  <!-- DETAILS -->
+
+  <section class="details">
+
+    <div class="label">
+      SAVE THE DATE
+    </div>
+
+    <h2>
+      01 · 11 · 2026
+    </h2>
+
+    <div class="detail">
+
+      <span class="detail-title">
+        TIME
+      </span>
+
+      <span class="detail-value">
+        At six o'clock in the evening
+      </span>
+
+    </div>
+
+
+    <div class="detail">
+
+      <span class="detail-title">
+        VENUE
+      </span>
+
+      <span class="detail-value">
+        Al Masa Hotel<br>
+        Nasr City<br>
+        Zumorda Hall
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown-section">
+
+    <div class="label">
+      COUNTING DOWN TO OUR DAY
+    </div>
+
+    <div class="countdown">
+
+      <div class="count">
+        <span id="days">00</span>
+        <small>DAYS</small>
+      </div>
+
+      <div class="count">
+        <span id="hours">00</span>
+        <small>HOURS</small>
+      </div>
+
+      <div class="count">
+        <span id="minutes">00</span>
+        <small>MINUTES</small>
+      </div>
+
+      <div class="count">
+        <span id="seconds">00</span>
+        <small>SECONDS</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CALENDAR -->
+
+  <section class="calendar-section">
+
+    <div class="label">
+      NOVEMBER 2026
+    </div>
+
+    <div class="calendar">
+
+      <div class="calendar-week">
+        <div>SUN</div>
+        <div>MON</div>
+        <div>TUE</div>
+        <div>WED</div>
+        <div>THU</div>
+        <div>FRI</div>
+        <div>SAT</div>
+      </div>
+
+
+      <div class="calendar-grid">
+
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <div class="empty"></div>
+
+        <div class="wedding-day-cell">
+          <span class="heart">♥</span>
+          <span class="number">1</span>
+        </div>
+
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+
+        <div>15</div>
+        <div>16</div>
+        <div>17</div>
+        <div>18</div>
+        <div>19</div>
+        <div>20</div>
+        <div>21</div>
+
+        <div>22</div>
+        <div>23</div>
+        <div>24</div>
+        <div>25</div>
+        <div>26</div>
+        <div>27</div>
+        <div>28</div>
+
+        <div>29</div>
+        <div>30</div>
+
+      </div>
+
+    </div>
+
+
+    <a
+      class="calendar-button"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mostafa%20%26%20Amira%20Wedding&dates=20261101T180000/20261101T220000&details=Mostafa%20%26%20Amira%20Wedding%20Invitation&location=Al%20Masa%20Hotel%2C%20Nasr%20City%2C%20Cairo"
+      target="_blank"
+      rel="noopener"
+    >
+      ADD TO CALENDAR
+    </a>
+
+  </section>
+
+
+  <!-- LOCATION -->
+
+  <section class="location">
+
+    <div class="label">
+      THE VENUE
+    </div>
+
+    <h2>
+      Al Masa Hotel
+    </h2>
+
+    <p>
+      Nasr City<br>
+      Zumorda Hall
+    </p>
+
+    <a
+      class="location-button"
+      href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
+      target="_blank"
+      rel="noopener"
+    >
+      VIEW LOCATION
+    </a>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="final-star">
+      ✦
+    </div>
+
+    <div class="final-small">
+      WE CAN'T WAIT TO CELEBRATE
+    </div>
+
+    <h2>
+      See you there
+    </h2>
+
+    <div class="final-names">
+      Mostafa &amp; Amira
+    </div>
+
+    <div class="date">
+      01 · 11 · 2026
+    </div>
+
+  </section>
+
+
+</div>
+
+
+<!-- MUSIC BUTTON -->
+
+<button id="musicButton" aria-label="Music">
+  ♫
+</button>
+
+
+<script>
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const openButton =
+  document.getElementById("openInvitation");
+
+const openingScreen =
+  document.getElementById("opening-screen");
+
+const invitation =
+  document.getElementById("invitation");
+
+const musicButton =
+  document.getElementById("musicButton");
+
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+openButton.addEventListener("click", function(){
+
+  invitation.classList.add("show");
+
+  openingScreen.classList.add("hide");
+
+  document.body.style.overflowY = "auto";
+
+
+  /*
+    IMPORTANT:
+    YouTube is NOT loaded when the page opens.
+    It loads only after the user presses the button.
+  */
+
+  const frame = document.createElement("iframe");
+
+  frame.id = "musicFrame";
+
+  frame.allow =
+    "autoplay; encrypted-media";
+
+  frame.src =
+    "https://www.youtube.com/embed/Tvpge6eYoPI?autoplay=1&loop=1&playlist=Tvpge6eYoPI&playsinline=1";
+
+  document.body.appendChild(frame);
+
+  musicButton.innerHTML = "❚❚";
+
+  musicStarted = true;
+
+});
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let musicStarted = false;
+
+musicButton.addEventListener("click", function(){
+
+  const frame =
+    document.getElementById("musicFrame");
+
+  if(!frame){
+
+    const newFrame =
+      document.createElement("iframe");
+
+    newFrame.id = "musicFrame";
+
+    newFrame.allow =
+      "autoplay; encrypted-media";
+
+    newFrame.src =
+      "https://www.youtube.com/embed/Tvpge6eYoPI?autoplay=1&loop=1&playlist=Tvpge6eYoPI&playsinline=1";
+
+    document.body.appendChild(newFrame);
+
+    musicStarted = true;
+
+    musicButton.innerHTML = "❚❚";
+
+    return;
+  }
+
+
+  if(musicStarted){
+
+    /*
+      Reloading with autoplay=0 effectively stops it.
+    */
+
+    frame.src =
+      "https://www.youtube.com/embed/Tvpge6eYoPI?autoplay=0&loop=1&playlist=Tvpge6eYoPI&playsinline=1";
+
+    musicStarted = false;
+
+    musicButton.innerHTML = "♫";
+
+  }else{
+
+    frame.src =
+      "https://www.youtube.com/embed/Tvpge6eYoPI?autoplay=1&loop=1&playlist=Tvpge6eYoPI&playsinline=1";
+
+    musicStarted = true;
+
+    musicButton.innerHTML = "❚❚";
+
+  }
+
+});
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+const weddingDate =
+  new Date("November 1, 2026 18:00:00").getTime();
+
+
+function updateCountdown(){
+
+  const now =
+    new Date().getTime();
+
+  const distance =
+    weddingDate - now;
+
+
+  if(distance <= 0){
+
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    return;
+  }
+
+
+  const days =
+    Math.floor(
+      distance /
+      (1000 * 60 * 60 * 24)
+    );
+
+
+  const hours =
+    Math.floor(
+      (distance %
+      (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
+
+
+  const minutes =
+    Math.floor(
+      (distance %
+      (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+
+  const seconds =
+    Math.floor(
+      (distance %
+      (1000 * 60)) /
+      1000
+    );
+
+
+  document.getElementById("days").textContent =
+    String(days).padStart(2,"0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2,"0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+</script>
+
+</body>
+</html>
