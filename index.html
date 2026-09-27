@@ -811,10 +811,9 @@ function loadMusic() {
   iframe.title =
     "Wedding music";
   iframe.allow =
-    "autoplay";
+  "autoplay; encrypted-media";
   iframe.src =
-    "https://www.youtube.com/embed/Tvpge6eYoPI?enablejsapi=1&autoplay=1&loop=1&playlist=Tvpge6eYoPI";
-  document
+  "https://www.youtube.com/embed/Tvpge6eYoPI?enablejsapi=1&autoplay=1&playsinline=1&loop=1&playlist=Tvpge6eYoPI";
     .getElementById("musicPlayer")
     .appendChild(iframe);
 }
