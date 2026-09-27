@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostafa & Amira Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: #f8f5ef;
+  color: #403a35;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+#opening {
+  position: fixed;
+  inset: 0;
+  background: #f8f5ef;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+}
+
+#opening.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.open-card {
+  width: 88%;
+  max-width: 430px;
+  padding: 65px 30px;
+  border: 1px solid #cbbba6;
+  background: rgba(255,255,255,0.35);
+  position: relative;
+}
+
+.open-card::before,
+.open-card::after {
+  content: "♡";
+  position: absolute;
+  color: #bba58c;
+  font-size: 30px;
+}
+
+.open-card::before {
+  top: 15px;
+  left: 18px;
+}
+
+.open-card::after {
+  bottom: 15px;
+  right: 18px;
+}
+
+.open-small {
+  font-size: 13px;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+}
+
+.open-names {
+  font-size: 48px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.open-date {
+  margin-top: 25px;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+.open-button {
+  margin-top: 45px;
+  padding: 15px 32px;
+  border: 1px solid #9f8d78;
+  background: transparent;
+  color: #403a35;
+  letter-spacing: 3px;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+#musicPlayer {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  left: -10px;
+  top: -10px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =========================
+   FIREWORKS
+========================= */
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  display: none;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   DECORATION BRANCHES
+========================= */
+
+.branch {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: .65;
+}
+
+.branch-line {
+  position: absolute;
+  width: 150px;
+  height: 3px;
+  background: #c8b49b;
+  border-radius: 50%;
+  transform: rotate(25deg);
+}
+
+.leaf {
+  position: absolute;
+  width: 24px;
+  height: 11px;
+  background: #d2bea5;
+  border-radius: 100% 0 100% 0;
+}
+
+.leaf:nth-child(2) {
+  top: 35px;
+  left: 40px;
+  transform: rotate(-25deg);
+}
+
+.leaf:nth-child(3) {
+  top: 58px;
+  left: 65px;
+  transform: rotate(25deg);
+}
+
+.leaf:nth-child(4) {
+  top: 80px;
+  left: 90px;
+  transform: rotate(-25deg);
+}
+
+.leaf:nth-child(5) {
+  top: 103px;
+  left: 115px;
+  transform: rotate(25deg);
+}
+
+.leaf:nth-child(6) {
+  top: 125px;
+  left: 135px;
+  transform: rotate(-25deg);
+}
+
+.top-left {
+  top: -30px;
+  left: -35px;
+  transform: rotate(-10deg);
+}
+
+.top-right {
+  top: -30px;
+  right: -35px;
+  transform: scaleX(-1) rotate(-10deg);
+}
+
+.bottom-left {
+  bottom: -30px;
+  left: -35px;
+  transform: scaleY(-1) rotate(-10deg);
+}
+
+.bottom-right {
+  bottom: -30px;
+  right: -35px;
+  transform: scale(-1) rotate(-10deg);
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 55px 25px 80px;
+  position: relative;
+  z-index: 5;
+}
+
+/* =========================
+   NAMES
+========================= */
+
+.families {
+  font-size: 20px;
+  letter-spacing: 7px;
+  line-height: 1.5;
+  margin-bottom: 45px;
+}
+
+h1 {
+  font-size: 76px;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.and {
+  font-size: 50px;
+  margin: 25px 0;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date {
+  font-size: 29px;
+  letter-spacing: 8px;
+  margin-top: 55px;
+  margin-bottom: 65px;
+}
+
+.time {
+  display: block;
+  margin-top: 18px;
+  color: #9f8d78;
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-frame {
+  max-width: 680px;
+  margin: auto;
+  padding: 18px;
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #bda991;
+  pointer-events: none;
+}
+
+.photo-frame::after {
+  content: "♡";
+  position: absolute;
+  right: -18px;
+  top: 35px;
+  color: #bda991;
+  font-size: 52px;
+}
+
+.photo-card {
+  background: white;
+  padding: 8px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.12);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+  max-width: 720px;
+  margin: 55px auto 75px;
+  font-size: 24px;
+  line-height: 1.9;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.section-title {
+  font-size: 27px;
+  letter-spacing: 6px;
+  line-height: 1.5;
+  margin-bottom: 35px;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.time-box {
+  background: white;
+  padding: 25px 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.number {
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-card {
+  max-width: 520px;
+  margin: 85px auto 0;
+  padding: 38px 25px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid #d1c1ad;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.calendar-title {
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+.calendar-year {
+  font-size: 15px;
+  letter-spacing: 4px;
+  margin-top: 8px;
+  color: #9f8d78;
+}
+
+.calendar-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 14px 5px;
+  align-items: center;
+}
+
+.calendar-grid div {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.weekday {
+  font-size: 11px !important;
+  letter-spacing: 1px;
+  color: #9f8d78;
+}
+
+.wedding-day {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #403a35;
+  z-index: 1;
+}
+
+.wedding-day::before {
+  content: "♡";
+  position: absolute;
+  font-size: 58px;
+  line-height: 1;
+  color: #c2aa8e;
+  z-index: -1;
+  top: -7px;
+}
+
+/* =========================
+   CALENDAR BUTTON
+========================= */
+
+.add-calendar {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 13px 25px;
+  border: 1px solid #a9967e;
+  color: #403a35;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-family: 'Cinzel', serif;
+}
+
+/* =========================
+   VENUE
+========================= */
+
+.venue {
+  margin-top: 85px;
+  padding: 45px 20px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.venue h2 {
+  font-size: 30px;
+  font-weight: normal;
+  letter-spacing: 4px;
+}
+
+.venue p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.map-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: #403a35;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 70px;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:600px) {
+
+  .branch {
+    width: 120px;
+    height: 120px;
+  }
+
+  .leaf {
+    width: 17px;
+    height: 8px;
+  }
+
+  .container {
+    padding: 40px 18px 60px;
+  }
+
+  .families {
+    font-size: 15px;
+    letter-spacing: 4px;
+  }
+
+  h1 {
+    font-size: 55px;
+  }
+
+  .and {
+    font-size: 38px;
+  }
+
+  .date {
+    font-size: 21px;
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+  }
+
+  .time {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .photo-frame {
+    padding: 12px;
+  }
+
+  .photo-frame::after {
+    right: -8px;
+    font-size: 40px;
+  }
+
+  .message {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    letter-spacing: 4px;
+  }
+
+  .countdown {
+    gap: 7px;
+  }
+
+  .time-box {
+    padding: 18px 4px;
+  }
+
+  .number {
+    font-size: 28px;
+  }
+
+  .label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .calendar-card {
+    padding: 30px 12px;
+  }
+
+  .calendar-grid {
+    gap: 10px 2px;
+  }
+
+  .calendar-grid div {
+    font-size: 12px;
+  }
+
+  .weekday {
+    font-size: 9px !important;
+  }
+
+  .wedding-day {
+    width: 34px;
+    height: 34px;
+  }
+
+  .wedding-day::before {
+    font-size: 48px;
+  }
+
+  .venue h2 {
+    font-size: 23px;
+  }
+}
+
+/* =========================
+   AUTO SCROLL
+========================= */
+
+body.auto-scrolling {
+  scroll-behavior: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- =========================
+     OPENING SCREEN
+========================= -->
+
+<div id="opening">
+
+  <div class="open-card">
+
+    <div class="open-small">
+      YOU ARE INVITED
+    </div>
+
+    <div class="open-names">
+      Mostafa
+      <br>
+      &amp;
+      <br>
+      Amira
+    </div>
+
+    <div class="open-date">
+      01 · 11 · 2026
+    </div>
+
+    <button
+      class="open-button"
+      onclick="openInvitation()">
+      OPEN INVITATION
+    </button>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<div id="musicPlayer"></div>
+
+<!-- =========================
+     FIREWORKS
+========================= -->
+
+<div id="fireworks">
+
+  <canvas id="fireworksCanvas"></canvas>
+
+</div>
+
+<!-- =========================
+     DECORATIONS
+========================= -->
+
+<div class="branch top-left">
+
+  <div class="branch-line"></div>
+
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+
+</div>
+
+<div class="branch top-right">
+
+  <div class="branch-line"></div>
+
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+
+</div>
+
+<div class="branch bottom-left">
+
+  <div class="branch-line"></div>
+
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+
+</div>
+
+<div class="branch bottom-right">
+
+  <div class="branch-line"></div>
+
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+  <span class="leaf"></span>
+
+</div>
+  <!-- OPENING SCREEN -->
+  <div id="opening-screen">
+
+    <div class="opening-content">
+
+      <div class="opening-small-text">
+        YOU ARE INVITED
+      </div>
+
+      <div class="opening-names">
+        Mostafa &amp; Amira
+      </div>
+
+      <div class="opening-date">
+        01 · 11 · 2026
+      </div>
+
+      <button id="openInvitation" type="button">
+        OPEN INVITATION
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- MAIN INVITATION -->
+  <main id="invitation" class="hidden">
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="small-title">
+          WEDDING INVITATION
+        </p>
+
+        <h1>
+          Mostafa
+          <span>&amp;</span>
+          Amira
+        </h1>
+
+        <p class="wedding-date">
+          01 · 11 · 2026
+        </p>
+
+        <p class="wedding-day">
+          SUNDAY
+        </p>
+
+      </div>
+
+    </section>
+        
+    <!-- COUPLE PHOTO -->
+    <section class="photo-section">
+
+      <div class="photo-frame">
+
+        <img
+          src="d954b11a-fb80-4180-af8d-680d21148b3b.jpeg"
+          alt="Mostafa & Amira"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- WEDDING MESSAGE -->
+    <section class="message-section">
+
+      <p class="section-label">
+        TOGETHER WITH THEIR FAMILIES
+      </p>
+
+      <h2>
+        We would love<br>
+        to celebrate<br>
+        this special day with you
+      </h2>
+
+      <div class="divider">✦</div>
+
+      <p class="message-text">
+        Your presence would make our special day even more beautiful.
+        We can't wait to celebrate this unforgettable moment with you.
+      </p>
+
+    </section>
+
+
+    <!-- DATE & TIME -->
+    <section class="details-section">
+
+      <p class="section-label">
+        SAVE THE DATE
+      </p>
+
+      <h2>
+        01 · 11 · 2026
+      </h2>
+
+      <p class="details-day">
+        SUNDAY
+      </p>
+
+      <div class="detail-item">
+        <span class="detail-title">TIME</span>
+        <span class="detail-value">
+          At six o'clock in the evening
+        </span>
+      </div>
+
+      <div class="detail-item">
+        <span class="detail-title">VENUE</span>
+        <span class="detail-value">
+          Al Masa Hotel<br>
+          Nasr City<br>
+          Zumorda Hall
+        </span>
+      </div>
+
+    </section>
+        </section>
+
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section">
+
+      <p class="section-label">
+        COUNTING DOWN TO OUR DAY
+      </p>
+
+      <div class="countdown">
+
+        <div class="count-box">
+          <span id="days">00</span>
+          <small>DAYS</small>
+        </div>
+
+        <div class="count-box">
+          <span id="hours">00</span>
+          <small>HOURS</small>
+        </div>
+
+        <div class="count-box">
+          <span id="minutes">00</span>
+          <small>MINUTES</small>
+        </div>
+
+        <div class="count-box">
+          <span id="seconds">00</span>
+          <small>SECONDS</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CALENDAR -->
+    <section class="calendar-section">
+
+      <p class="section-label">
+        NOVEMBER 2026
+      </p>
+
+      <div class="calendar">
+
+        <div class="calendar-header">
+          <span>SUN</span>
+          <span>MON</span>
+          <span>TUE</span>
+          <span>WED</span>
+          <span>THU</span>
+          <span>FRI</span>
+          <span>SAT</span>
+        </div>
+
+        <div class="calendar-days">
+
+          <span class="empty"></span>
+
+          <span class="empty"></span>
+
+          <span class="empty"></span>
+
+          <span class="empty"></span>
+
+          <span class="empty"></span>
+
+          <span class="empty"></span>
+
+          <span class="heart-day">
+            <span>1</span>
+            <i>♥</i>
+          </span>
+
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+
+          <span>8</span>
+          <span>9</span>
+          <span>10</span>
+          <span>11</span>
+          <span>12</span>
+          <span>13</span>
+          <span>14</span>
+
+          <span>15</span>
+          <span>16</span>
+          <span>17</span>
+          <span>18</span>
+          <span>19</span>
+          <span>20</span>
+          <span>21</span>
+
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+          <span>25</span>
+          <span>26</span>
+          <span>27</span>
+          <span>28</span>
+
+          <span>29</span>
+          <span>30</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ADD TO CALENDAR -->
+    <section class="calendar-button-section">
+
+      <a
+        class="calendar-button"
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mostafa%20%26%20Amira%20Wedding&dates=20261101T180000/20261101T220000&details=Mostafa%20%26%20Amira%20Wedding%20Invitation&location=Al%20Masa%20Hotel%2C%20Nasr%20City%2C%20Cairo"
+        target="_blank"
+        rel="noopener"
+      >
+        ADD TO CALENDAR
+      </a>
+
+    </section>
+        <!-- LOCATION -->
+    <section class="location-section">
+
+      <p class="section-label">
+        THE VENUE
+      </p>
+
+      <h2>
+        Al Masa Hotel
+      </h2>
+
+      <p class="location-text">
+        Nasr City<br>
+        Zumorda Hall
+      </p>
+
+      <a
+        class="location-button"
+        href="https://www.google.com/maps/search/?api=1&query=Al+Masa+Hotel+Nasr+City+Cairo"
+        target="_blank"
+        rel="noopener"
+      >
+        VIEW LOCATION
+      </a>
+
+    </section>
+
+
+    <!-- FINAL MESSAGE -->
+    <section class="final-section">
+
+      <div class="final-decoration">
+        ✦
+      </div>
+
+      <p class="final-small">
+        WE CAN'T WAIT TO CELEBRATE
+      </p>
+
+      <h2>
+        See you there
+      </h2>
+
+      <p class="final-names">
+        Mostafa &amp; Amira
+      </p>
+
+      <p class="final-date">
+        01 · 11 · 2026
+      </p>
+
+    </section>
+
+
+    <!-- MUSIC BUTTON -->
+    <button
+      id="musicButton"
+      class="music-button"
+      type="button"
+      aria-label="Music"
+    >
+      ♫
+    </button>
+
+
+    <!-- YOUTUBE MUSIC -->
+    <div id="youtube-player"></div>
+        <style>
+
+      /* =========================
+         GENERAL SECTIONS
+      ========================= */
+
+      section {
+        position: relative;
+        width: 100%;
+        padding: 90px 20px;
+        text-align: center;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .section-label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: #bda991;
+        margin-bottom: 25px;
+      }
+
+
+      /* =========================
+         HERO
+      ========================= */
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+          linear-gradient(
+            rgba(248,245,239,0.88),
+            rgba(248,245,239,0.96)
+          );
+      }
+
+      .hero-content {
+        animation: fadeUp 1.5s ease forwards;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 13vw, 90px);
+        font-weight: normal;
+        line-height: 1.05;
+        color: #6c6055;
+      }
+
+      .hero h1 span {
+        display: block;
+        font-size: 35px;
+        color: #bda991;
+        margin: 10px 0;
+      }
+
+      .wedding-date {
+        margin-top: 35px;
+        font-size: 18px;
+        letter-spacing: 5px;
+        color: #8d7d6d;
+      }
+
+      .wedding-day {
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 4px;
+        color: #bda991;
+      }
+
+
+      /* =========================
+         PHOTO
+      ========================= */
+
+      .photo-section {
+        padding-top: 40px;
+      }
+
+      .photo-frame {
+        width: min(88vw, 430px);
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #cbbba6;
+        border-radius: 50% 50% 0 0;
+      }
+
+      .photo-frame img {
+        width: 100%;
+        border-radius: 50% 50% 0 0;
+      }
+
+
+      /* =========================
+         MESSAGE
+      ========================= */
+
+      .message-section {
+        max-width: 700px;
+        margin: auto;
+      }
+
+      .message-section h2 {
+        font-size: clamp(28px, 7vw, 48px);
+        line-height: 1.35;
+        font-weight: normal;
+        color: #665b50;
+      }
+
+      .divider {
+        margin: 30px 0;
+        color: #bda991;
+        font-size: 20px;
+      }
+
+      .message-text {
+        max-width: 520px;
+        margin: auto;
+        font-size: 15px;
+        line-height: 2;
+        color: #817568;
+      }
+
+
+      /* =========================
+         DETAILS
+      ========================= */
+
+      .details-section {
+        background: #eee8df;
+      }
+
+      .details-section h2 {
+        font-size: clamp(30px, 8vw, 52px);
+        font-weight: normal;
+        color: #665b50;
+      }
+
+      .details-day {
+        margin: 12px 0 45px;
+        letter-spacing: 4px;
+        font-size: 11px;
+        color: #bda991;
+      }
+
+      .detail-item {
+        max-width: 500px;
+        margin: 25px auto;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #d7cbbb;
+      }
+
+      .detail-title {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: #bda991;
+      }
+
+      .detail-value {
+        display: block;
+        font-size: 17px;
+        line-height: 1.8;
+        color: #6f6358;
+      }
+
+
+      /* =========================
+         COUNTDOWN
+      ========================= */
+
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 600px;
+        margin: 40px auto 0;
+      }
+
+      .count-box {
+        padding: 20px 5px;
+      }
+
+      .count-box span {
+        display: block;
+        font-size: clamp(28px, 7vw, 48px);
+        color: #6c6055;
+      }
+
+      .count-box small {
+        display: block;
+        margin-top: 8px;
+        font-size: 8px;
+        letter-spacing: 2px;
+        color: #bda991;
+      }
+
+
+      /* =========================
+         CALENDAR
+      ========================= */
+
+      .calendar {
+        max-width: 420px;
+        margin: 35px auto 0;
+      }
+
+      .calendar-header,
+      .calendar-days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .calendar-header span {
+        padding: 10px 0;
+        font-size: 8px;
+        letter-spacing: 1px;
+        color: #bda991;
+      }
+
+      .calendar-days span {
+        position: relative;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: #74685d;
+      }
+
+      .calendar-days .empty {
+        visibility: hidden;
+      }
+
+      .heart-day {
+        position: relative;
+      }
+
+      .heart-day i {
+        position: absolute;
+        font-style: normal;
+        font-size: 43px;
+        color: #d2bea5;
+        opacity: .35;
+        z-index: 0;
+      }
+
+      .heart-day span {
+        position: relative;
+        z-index: 1;
+      }
+
+
+      /* =========================
+         BUTTONS
+      ========================= */
+
+      .calendar-button-section {
+        padding-top: 20px;
+      }
+
+      .calendar-button,
+      .location-button {
+        display: inline-block;
+        padding: 15px 28px;
+        border: 1px solid #bda991;
+        color: #77695c;
+        font-size: 10px;
+        letter-spacing: 2px;
+        transition: .3s ease;
+      }
+
+      .calendar-button:hover,
+      .location-button:hover {
+        background: #bda991;
+        color: white;
+      }
+
+
+      /* =========================
+         LOCATION
+      ========================= */
+
+      .location-section {
+        background: #eee8df;
+      }
+
+      .location-section h2 {
+        font-size: 35px;
+        font-weight: normal;
+        color: #665b50;
+      }
+
+      .location-text {
+        margin: 15px 0 30px;
+        line-height: 1.8;
+        color: #817568;
+      }
+
+
+      /* =========================
+         FINAL
+      ========================= */
+
+      .final-section {
+        min-height: 75vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .final-decoration {
+        color: #bda991;
+        font-size: 25px;
+        margin-bottom: 25px;
+      }
+
+      .final-small {
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #bda991;
+      }
+
+      .final-section h2 {
+        margin: 25px 0;
+        font-size: clamp(38px, 10vw, 65px);
+        font-weight: normal;
+        color: #665b50;
+      }
+
+      .final-names {
+        font-size: 20px;
+        color: #817568;
+      }
+
+      .final-date {
+        margin-top: 15px;
+        letter-spacing: 4px;
+        font-size: 11px;
+        color: #bda991;
+      }
+
+
+      /* =========================
+         MUSIC BUTTON
+      ========================= */
+
+      .music-button {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid #bda991;
+        background: rgba(248,245,239,.95);
+        color: #8d7d6d;
+        font-size: 20px;
+        z-index: 999;
+        cursor: pointer;
+      }
+
+
+      /* =========================
+         ANIMATIONS
+      ========================= */
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+
+      /* =========================
+         MOBILE
+      ========================= */
+
+      @media (max-width: 600px) {
+
+        section {
+          padding: 75px 18px;
+        }
+
+        .countdown {
+          gap: 0;
+        }
+
+        .count-box span {
+          font-size: 28px;
+        }
+
+        .calendar-days span {
+          min-height: 42px;
+        }
+
+      }
+
+    </style>
+      </main>
+
+  <!-- OPENING SCREEN STYLE -->
+  <style>
+    #opening-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #f8f5ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #opening-screen.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .opening-content {
+      padding: 30px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .opening-small-text {
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: #bda991;
+      margin-bottom: 25px;
+    }
+
+    .opening-names {
+      font-size: clamp(45px, 12vw, 75px);
+      color: #665b50;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    .opening-date {
+      margin-top: 25px;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: #8d7d6d;
+    }
+
+    #openInvitation {
+      margin-top: 40px;
+      padding: 16px 32px;
+      background: transparent;
+      border: 1px solid #bda991;
+      color: #77695c;
+      font-size: 10px;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: .35s ease;
+    }
+
+    #openInvitation:hover {
+      background: #bda991;
+      color: white;
+    }
+  </style>
+
+
+  <!-- YOUTUBE API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+
+    /* =========================
+       MUSIC
+    ========================= */
+
+    let player;
+    let musicStarted = false;
+
+    function onYouTubeIframeAPIReady() {
+
+      player = new YT.Player('youtube-player', {
+
+        height: '1',
+        width: '1',
+
+        videoId: 'Tvpge6eYoPI',
+
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: 'Tvpge6eYoPI',
+          playsinline: 1,
+          rel: 0
+        },
+
+        events: {
+          onReady: function () {
+            console.log('Music ready');
+          }
+        }
+
+      });
+
+    }
+
+
+    /* =========================
+       OPEN INVITATION
+    ========================= */
+
+    const openButton =
+      document.getElementById('openInvitation');
+
+    const openingScreen =
+      document.getElementById('opening-screen');
+
+    const invitation =
+      document.getElementById('invitation');
+
+    openButton.addEventListener('click', function () {
+
+      /* Show invitation */
+      invitation.classList.remove('hidden');
+
+      /* Close opening screen */
+      openingScreen.classList.add('opened');
+
+      /* Start music after user interaction */
+      if (player && player.playVideo) {
+        player.unMute();
+        player.setVolume(100);
+        player.playVideo();
+        musicStarted = true;
+      }
+
+      /* Scroll to the beginning */
+      setTimeout(function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+
+    });
+
+
+    /* =========================
+       MUSIC BUTTON
+    ========================= */
+
+    const musicButton =
+      document.getElementById('musicButton');
+
+    musicButton.addEventListener('click', function () {
+
+      if (!player) return;
+
+      if (musicStarted) {
+
+        player.pauseVideo();
+
+        musicStarted = false;
+
+        musicButton.innerHTML = '♫';
+
+      } else {
+
+        player.unMute();
+        player.setVolume(100);
+        player.playVideo();
+
+        musicStarted = true;
+
+        musicButton.innerHTML = '❚❚';
+
+      }
+
+    });
+
+
+    /* =========================
+       COUNTDOWN
+    ========================= */
+
+    const weddingDate =
+      new Date('November 1, 2026 18:00:00').getTime();
+
+
+    function updateCountdown() {
+
+      const now = new Date().getTime();
+
+      const distance = weddingDate - now;
+
+
+      if (distance <= 0) {
+
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+
+        return;
+      }
+
+
+      const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      const hours =
+        Math.floor(
+          (distance % (1000 * 60 * 60 * 24))
+          / (1000 * 60 * 60)
+        );
+
+      const minutes =
+        Math.floor(
+          (distance % (1000 * 60 * 60))
+          / (1000 * 60)
+        );
+
+      const seconds =
+        Math.floor(
+          (distance % (1000 * 60))
+          / 1000
+        );
+
+
+      document.getElementById('days').innerText =
+        String(days).padStart(2, '0');
+
+      document.getElementById('hours').innerText =
+        String(hours).padStart(2, '0');
+
+      document.getElementById('minutes').innerText =
+        String(minutes).padStart(2, '0');
+
+      document.getElementById('seconds').innerText =
+        String(seconds).padStart(2, '0');
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+
+  </script>
+
+</body>
+</html>
